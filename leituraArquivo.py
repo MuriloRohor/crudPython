@@ -7,6 +7,8 @@ nome_arquivo = 'banco.json'
 def lerArquivo():
     arquivo = open(nome_arquivo, 'r', encoding='utf-8')
     data = arquivo.read()
+    if len(data) == 0:
+        return []
     data = json.loads(data)
     arquivo.close()
 

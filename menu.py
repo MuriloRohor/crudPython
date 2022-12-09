@@ -30,5 +30,8 @@ while True:
         excluir(musica)
 
     if opcao == 4:
-        musica = selecionarMusica()
-        selecionar(musica)
+        nome = selecionarMusica()
+        musica = selecionar(nome)
+        exibirMusica(musica)
+
+

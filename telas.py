@@ -9,10 +9,10 @@ def cadastrarMusica():
     link = input("- Link: ")
     novaMusica = Musica(nome, estilo, banda, ano, link)
     musica = {}
-    musica['Nome'] = novaMusica.get_nome()
-    musica['Estilo'] = novaMusica.get_estilo()
-    musica['Banda'] = novaMusica.get_banda()
-    musica['Ano'] = novaMusica.get_ano()
+    musica['nome'] = novaMusica.get_nome()
+    musica['estilo'] = novaMusica.get_estilo()
+    musica['banda'] = novaMusica.get_banda()
+    musica['ano'] = novaMusica.get_ano()
     musica['link'] = novaMusica.get_link()
     return musica
 
@@ -24,10 +24,10 @@ def excluirMusica():
 
 def editarMusica():
     musica = {}
-    musica['Nome'] = input("- Nome da Musica: ")
-    musica['Estilo'] = input("- Estilo: ")
-    musica['Banda'] = input("- Banda/Arista: ")
-    musica['Ano'] = input("- Ano de Lançamento: ")
+    musica['nome'] = input("- Nome da Musica: ")
+    musica['estilo'] = input("- Estilo: ")
+    musica['banda'] = input("- Banda/Arista: ")
+    musica['ano'] = input("- Ano de Lançamento: ")
     musica['link'] = input("- Link: ")
     return musica
 
@@ -39,3 +39,12 @@ def selecionarMusica():
 
 def selecionarTodos():
     pass
+
+
+def exibirMusica(dado):
+    print("-------- Musica --------")
+    print(f"- Nome da Musica: {dado['nome']}")
+    print(f"- Estilo: {dado['estilo']}")
+    print(f"- Banda/Arista: {dado['banda']}")
+    print(f"- Ano de Lançamento: {dado['ano']}")
+    print(f"- Link: {dado['link']}")
