@@ -27,4 +27,4 @@ class Musica:
         return self.__ano
 
     def get_link(self):
-        return self.__link     
+        return self.__link 

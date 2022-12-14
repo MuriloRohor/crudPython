@@ -1,5 +1,5 @@
 from leituraArquivo import *
-
+import os
 
 def criar(dado: dict) -> dict:
     musicas = lerArquivo()
@@ -12,17 +12,16 @@ def excluir(dado: str):
     for musica in musicas:
         if musica['nome'] == dado:
             musicas.remove(musica)
-    salvarArquivo(musicas)
-
-
-def editar(dado: str):
+            salvarArquivo(musicas)
+            return dado
+            
+def editar(dado: str, musica):
     musicas = lerArquivo()
-    musica = input("- Qual Musica Editar: ")
     for i, e in enumerate(musicas):
         if e['nome'] == musica:
             musicas[i] = dado
-    salvarArquivo(musicas)
-
+            salvarArquivo(musicas)
+            return musica
 
 def selecionar(dado: str):
     musicas = lerArquivo()
@@ -30,6 +29,16 @@ def selecionar(dado: str):
         if e['nome'] == dado:
             return musicas[i]
 
-
 def listar():
     return lerArquivo()
+
+def limpar():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+def travar():
+    input("Digite ENTER para continuar...")
+
+def exibirMensagem(msg):
+    print(msg)
+    travar()
+    

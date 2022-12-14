@@ -1,7 +1,9 @@
 from classe import Musica
-
+from funcao import limpar, travar
 
 def cadastrarMusica():
+    limpar()
+    print("-------- Cadastrar Musica --------")
     nome = input("- Nome da Musica: ")
     estilo = input("- Estilo: ")
     banda = input("- Banda/Arista:")
@@ -16,13 +18,9 @@ def cadastrarMusica():
     musica['link'] = novaMusica.get_link()
     return musica
 
-
-def excluirMusica():
-    musica = input("Digite o nome da Musica que deseja excluir: ")
-    return musica
-
-
 def editarMusica():
+    limpar()
+    print("-------- Editar Musica --------")
     musica = {}
     musica['nome'] = input("- Nome da Musica: ")
     musica['estilo'] = input("- Estilo: ")
@@ -31,15 +29,18 @@ def editarMusica():
     musica['link'] = input("- Link: ")
     return musica
 
-
 def selecionarMusica():
+    limpar()
+    print("-------- Selecionar Musica --------")
     musica = input("- Nome da Musica: ")
     return musica
 
-
-def selecionarTodos():
-    pass
-
+def selecionarMusicas(musicas):
+    limpar()
+    print("-------- Lista de Musicas --------")
+    for musica in musicas:
+        exibirMusica(musica)
+    travar()
 
 def exibirMusica(dado):
     print("-------- Musica --------")
