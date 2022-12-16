@@ -3,7 +3,6 @@ import os.path
 
 nome_arquivo = 'banco.json'
 
-
 def lerArquivo():
     arquivo = open(nome_arquivo, 'r', encoding='utf-8')
     data = arquivo.read()
@@ -13,7 +12,6 @@ def lerArquivo():
     arquivo.close()
 
     return data
-
 
 def salvarArquivo(dados):
     arquivo = open(nome_arquivo, 'w+', encoding='utf-8')

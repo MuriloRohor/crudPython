@@ -6,7 +6,6 @@ def criar(dado: dict) -> dict:
     musicas.append(dado)
     salvarArquivo(musicas)
 
-
 def excluir(dado: str):
     musicas = lerArquivo()
     for musica in musicas:

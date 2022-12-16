@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "nome": "teste",
+        "estilo": "teste",
+        "banda": "teste",
+        "ano": "teste",
+        "link": "teste"
+    }
+]
