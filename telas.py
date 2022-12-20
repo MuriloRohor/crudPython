@@ -1,32 +1,27 @@
-from classe import Musica
-from funcao import limpar, travar
+from musica import Musica
+import os
 
-def cadastrarMusica():
+def cadastrarMusica() -> Musica:
     limpar()
     print("-------- Cadastrar Musica --------")
-    nome = input("- Nome da Musica: ")
-    estilo = input("- Estilo: ")
-    banda = input("- Banda/Arista:")
-    ano = input("- Ano de Lançamento: ")
-    link = input("- Link: ")
-    novaMusica = Musica(nome, estilo, banda, ano, link)
-    musica = {}
-    musica['nome'] = novaMusica.get_nome()
-    musica['estilo'] = novaMusica.get_estilo()
-    musica['banda'] = novaMusica.get_banda()
-    musica['ano'] = novaMusica.get_ano()
-    musica['link'] = novaMusica.get_link()
+    musica = Musica()
+    musica.set_nome(input("- Nome da Musica: "))
+    musica.set_estilo(input("- Estilo: "))
+    musica.set_banda(input("- Banda/Artista: "))
+    musica.set_ano(input("- Ano de Lançamento: "))
+    musica.set_link(input("- Link: "))
+    
     return musica
 
-def editarMusica():
+def editarMusica() -> Musica:
     limpar()
     print("-------- Editar Musica --------")
-    musica = {}
-    musica['nome'] = input("- Nome da Musica: ")
-    musica['estilo'] = input("- Estilo: ")
-    musica['banda'] = input("- Banda/Arista: ")
-    musica['ano'] = input("- Ano de Lançamento: ")
-    musica['link'] = input("- Link: ")
+    musica = Musica()
+    musica.set_nome(input("- Nome da Musica: "))
+    musica.set_estilo(input("- Estilo: "))
+    musica.set_banda(input("- Banda/Artista: "))
+    musica.set_ano(input("- Ano de Lançamento: "))
+    musica.set_link(input("- Link: "))
     return musica
 
 def selecionarMusica():
@@ -35,17 +30,27 @@ def selecionarMusica():
     musica = input("- Nome da Musica: ")
     return musica
 
-def selecionarMusicas(musicas):
+def listarMusicas(musicas):
     limpar()
     print("-------- Lista de Musicas --------")
     for musica in musicas:
         exibirMusica(musica)
     travar()
 
-def exibirMusica(dado):
+def exibirMusica(musica: Musica):
     print("-------- Musica --------")
-    print(f"- Nome da Musica: {dado['nome']}")
-    print(f"- Estilo: {dado['estilo']}")
-    print(f"- Banda/Arista: {dado['banda']}")
-    print(f"- Ano de Lançamento: {dado['ano']}")
-    print(f"- Link: {dado['link']}")
+    print(f"- Nome da Musica: {musica.get_nome()}")
+    print(f"- Estilo: {musica.get_estilo()}")
+    print(f"- Banda/Arista: {musica.get_banda()}")
+    print(f"- Ano de Lançamento: {musica.get_ano()}")
+    print(f"- Link: {musica.get_link()}")
+
+def limpar():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+def travar():
+    input("Digite ENTER para continuar...")
+
+def exibirMensagem(msg):
+    print(msg)
+    travar()

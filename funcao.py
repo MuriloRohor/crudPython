@@ -1,44 +1,55 @@
-from leituraArquivo import *
+from leituraArquivo import leituraArquivo
+from musica import Musica
 import os
 
-def criar(dado: dict) -> dict:
-    musicas = lerArquivo()
-    musicas.append(dado)
-    salvarArquivo(musicas)
+class Funcao:
+    __banco = leituraArquivo()
 
 
-def excluir(dado: str):
-    musicas = lerArquivo()
-    for musica in musicas:
-        if musica['nome'] == dado:
-            musicas.remove(musica)
-            salvarArquivo(musicas)
-            return dado
-            
-def editar(dado: str, musica):
-    musicas = lerArquivo()
-    for i, e in enumerate(musicas):
-        if e['nome'] == musica:
-            musicas[i] = dado
-            salvarArquivo(musicas)
-            return musica
+    def criar(self, dado: Musica) -> Musica:
+        musicas = self.selecionar_todos()
+        musicas.append(dado)
+        self.__banco.salvarArquivo(list(map(lambda x: x.tooDict(), musicas)))
 
-def selecionar(dado: str):
-    musicas = lerArquivo()
-    for i, e in enumerate(musicas):
-        if e['nome'] == dado:
-            return musicas[i]
 
-def listar():
-    return lerArquivo()
+    def excluir(self, dado: str):
+        musicas = self.selecionar_todos()
+        for musica in musicas:
+            if musica.get_nome() == dado:
+                musicas.remove(musica)
+        self.__banco.salvarArquivo(musicas)
 
-def limpar():
-    os.system('clear' if os.name == 'posix' else 'cls')
 
-def travar():
-    input("Digite ENTER para continuar...")
+                
+    def editar(self, dado: str, musica):
+        musicas = self.selecionar_todos()
+        for i, e in enumerate(musicas):
+            if e.get_nome() == musica:
+                musicas[i] = dado
+                self.__banco.salvarArquivo(list(map(lambda x: x.tooDict(), musicas)))
+                return True
 
-def exibirMensagem(msg):
-    print(msg)
-    travar()
-    
+
+    def selecionar(self, dado: str):
+        musicas = self.selecionar_todos()
+        for i, e in enumerate(musicas):
+            if e.get_nome() == dado:
+                return musicas[i]
+
+    def selecionar_todos(self):
+        musicas = []
+        for i in self.__banco.lerArquivo():
+            musica = Musica()
+            musica.set_nome(i['nome'])
+            musica.set_estilo(i['estilo'])
+            musica.set_banda(i['banda'])
+            musica.set_ano(i['ano'])
+            musica.set_link(i['link'])
+            musicas.append(musica)
+        return musicas
+
+    def listar(self):
+        return self.__banco.lerArquivo()
+
+
+        
