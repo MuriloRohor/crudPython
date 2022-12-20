@@ -5,7 +5,6 @@ class leituraArquivo:
 
     __nome_arquivo = 'banco.json'
 
-
     def lerArquivo(self):
         arquivo = open(self.__nome_arquivo, 'r', encoding='utf-8')
         data = arquivo.read()
@@ -13,7 +12,6 @@ class leituraArquivo:
             return []
         data = json.loads(data)
         arquivo.close()
-
         return data
 
 
@@ -22,3 +20,4 @@ class leituraArquivo:
         data = json.dumps(dados, indent=4)
         arquivo.write(data)
         arquivo.close()
+

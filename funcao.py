@@ -5,7 +5,6 @@ import os
 class Funcao:
     __banco = leituraArquivo()
 
-
     def criar(self, dado: Musica) -> Musica:
         musicas = self.selecionar_todos()
         musicas.append(dado)
@@ -18,9 +17,7 @@ class Funcao:
             if musica.get_nome() == dado:
                 musicas.remove(musica)
         self.__banco.salvarArquivo(musicas)
-
-
-                
+      
     def editar(self, dado: str, musica):
         musicas = self.selecionar_todos()
         for i, e in enumerate(musicas):
@@ -28,8 +25,7 @@ class Funcao:
                 musicas[i] = dado
                 self.__banco.salvarArquivo(list(map(lambda x: x.tooDict(), musicas)))
                 return True
-
-
+                
     def selecionar(self, dado: str):
         musicas = self.selecionar_todos()
         for i, e in enumerate(musicas):
